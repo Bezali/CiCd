@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Runs when changes are pushed to the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Get your code from the repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Set the Node.js version (adjust if necessary)
+
+      - name: Install dependencies
+        run: npm install  # Install the dependencies listed in package.json
+
+      - name: Run tests
+        run: npm test  # Run the test command, replace with your testing command
